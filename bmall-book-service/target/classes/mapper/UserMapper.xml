@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hnit.gmall.user.BookMapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.hnit.bmall.bean.User" >
+    <constructor >
+      <idArg column="username" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="role" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="introduction" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    username, name, password, role, avatar, introduction
+  </sql>
+</mapper>

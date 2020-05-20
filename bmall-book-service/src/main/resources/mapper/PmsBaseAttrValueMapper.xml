@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hnit.bmall.book.mapper.PmsBaseAttrValueMapper" >
+    <resultMap id="BaseResultMap" type="com.hnit.bmall.bean.PmsBaseAttrValue" >
+        <constructor >
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="value_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="attr_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="is_enable" jdbcType="INTEGER" javaType="java.lang.Integer" />
+        </constructor>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, value_name, attr_id, is_enable
+    </sql>
+    <insert id="insertBackId" parameterType="com.hnit.bmall.bean.PmsBaseAttrValue"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into pms_base_attr_value (id, value_name, attr_id,
+                                         is_enable)
+        values (#{id,jdbcType=INTEGER}, #{valueName,jdbcType=VARCHAR}, #{attrId,jdbcType=INTEGER},
+                #{isEnable,jdbcType=INTEGER})
+    </insert>
+
+</mapper>

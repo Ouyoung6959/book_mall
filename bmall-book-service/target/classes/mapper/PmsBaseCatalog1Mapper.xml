@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hnit.bmall.book.mapper.PmsBaseCatalog1Mapper" >
+    <resultMap type="com.hnit.bmall.bean.PmsBaseCatalog1" id="pmsBaseCatalog1Map">
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <collection property="pmsBaseCatalog2s" ofType="com.hnit.bmall.bean.PmsBaseCatalog2" autoMapping="true">
+            <id column="c2Id" property="id" jdbcType="INTEGER"/>
+            <result column="c2Name" property="name" jdbcType="VARCHAR"/>
+            <result column="catalog1_id" property="catalog1Id" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+    <select id="getCatalogs" resultMap="pmsBaseCatalog1Map">
+        select pms_base_catalog1.id,pms_base_catalog1.name,pms_base_catalog2.id  c2Id,pms_base_catalog2.name  c2Name,catalog1_id from book_study.pms_base_catalog1 left join book_study.pms_base_catalog2 on pms_base_catalog1.id=catalog1_id
+    </select>
+</mapper>

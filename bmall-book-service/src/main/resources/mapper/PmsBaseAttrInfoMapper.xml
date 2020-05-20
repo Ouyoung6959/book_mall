@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hnit.bmall.book.mapper.PmsBaseAttrInfoMapper" >
+    <resultMap id="BaseResultMap" type="com.hnit.bmall.bean.PmsBaseAttrInfo" >
+        <constructor >
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="attr_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+            <arg column="catalog2_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+            <arg column="is_enable" jdbcType="VARCHAR" javaType="java.lang.String" />
+        </constructor>
+    </resultMap>
+    <resultMap id="selectAttrValueListByValueIdMap" type="com.hnit.bmall.bean.PmsBaseAttrInfo" autoMapping="true">
+        <result column="ba_id" property="id"></result>
+        <collection property="attrValueList" ofType="com.hnit.bmall.bean.PmsBaseAttrValue" autoMapping="true">
+            <result column="bv_id" property="id"></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectAttrValueListByValueId" resultMap="selectAttrValueListByValueIdMap">
+        SELECT ba.*,ba.id as ba_id ,bv.* ,bv.id as bv_id from book_study.pms_base_attr_info ba , book_study.pms_base_attr_value bv
+        where ba.id = bv.attr_id and bv.id in (${valueIdStr})
+    </select>
+</mapper>

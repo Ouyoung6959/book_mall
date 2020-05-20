@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnit.bmall.book.mapper.PmsBookInfoMapper">
+  <resultMap id="ResultMapWithBLOBs" type="com.hnit.bmall.bean.PmsBookInfo">
+    <constructor>
+      <idArg column="bid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.Double" jdbcType="VARCHAR" />
+      <arg column="image_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pubilsh_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="catalog2_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="description" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    bid, title, price, image_url,pubilsh_time, catalog2_id,description
+  </sql>
+  <insert id="insertBackId" parameterType="com.hnit.bmall.bean.PmsBookInfo"
+          useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into pms_book_info (bid, title,price,image_url,pubilsh_time,catalog2_id,description)
+    values (#{bid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR},
+            #{imageUrl,jdbcType=VARCHAR}, #{pubilshTime,jdbcType=VARCHAR}, #{catalog2Id,jdbcType=INTEGER},
+            #{description,jdbcType=VARCHAR})
+  </insert>
+</mapper>

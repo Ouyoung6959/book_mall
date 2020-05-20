@@ -1,0 +1,9 @@
+package com.hnit.bmall.book.mapper;
+
+
+import com.hnit.bmall.bean.PmsBaseCatalog2;
+import tk.mybatis.mapper.common.Mapper;
+
+public interface PmsBaseCatalog2Mapper  extends Mapper<PmsBaseCatalog2> {
+
+}
